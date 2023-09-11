@@ -44,6 +44,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Django Rest Framework
+    'rest_framework',
+
+    # Djoser For Authenticatin
+    'djoser',
+
     # Created Apps
     'authentication',
 ]
@@ -75,6 +81,20 @@ TEMPLATES = [
         },
     },
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ),
+}
+
+DJOSER = {
+    'SERIALIZERS': {
+        'user_create': 'authentication.serializers.CustomUserSerializer',
+        'user': 'authentication.serializers.CustomUserSerializer',
+    },
+}
 
 WSGI_APPLICATION = 'main.wsgi.application'
 
